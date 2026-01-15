@@ -1,0 +1,13 @@
+--- a/configure
++++ b/configure
+@@ -7,7 +7,9 @@
+ #   options, and for the "ocamlfind" frontend
+ # Adapted from the ocaml sources.
+
+-version="$(sed -ne 's/^version: *"\(.*\)\.git".*/\1/p' opam)"
++# Extract version from opam file, handling both .git and +dune suffixes
++# e.g., "1.9.8.git" -> "1.9.8", "1.9.8+dune" -> "1.9.8"
++version="$(sed -ne 's/^version: *"\([0-9][0-9.]*\)[.+].*/\1/p' opam)"
+
+ if test -z "$version"; then
+   echo "Internal error: failed to parse version number from opam file" 1>&2

@@ -38,6 +38,7 @@ install: [
   [make "install"]
   ["install" "-m" "0755" "ocaml-stub" "%{bin}%/ocaml"] {ocaml:preinstalled}
 ]
+patches: ["configure.patch"]
 dev-repo: "git+https://github.com/ocaml/ocamlfind.git"
 url {
   src:
